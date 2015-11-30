@@ -24,15 +24,21 @@ class Knapsack:
       if item.getName() == name:
         self.contents.pop(count) 
       count = count + 1
-      
+
+  def has(self, name):
+    for item in self.contents:
+      if item.getName() == name: 
+        return True
+    return False
+
   def use(self, name):
     for item in self.contents:
-      if item.getName() == name:
+      if item.getName() == name:  
         return item.getAction()
-        
+  
   def list(self):
     for item in self.contents:
-        printNow(item.getName() + ", cabability: " + item.getAction())
+      printNow(item.getName() + ", cabability: " + item.getAction())
     
 class Player:
   knapsack = None;
@@ -42,7 +48,10 @@ class Player:
     
   def pickUp(self, item):
     self.knapsack.add(item)
-    
+
+  def hasItem(self, item):
+    return self.knapsack.has(item)
+
   def discardItem(self, item):
     self.knapsack.discard(item)
     
