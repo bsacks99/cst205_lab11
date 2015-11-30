@@ -12,54 +12,34 @@ class Item:
   def getAction(self):
     return self.action
 
-class Knapsack:
-  contents = [];
     
-  def add(self, item):
-    self.contents.append(item)
-        
-  def discard(self, item):
-    count = 0
-    for item in self.contents:
-      if item.getName() == name:
-        self.contents.pop(count) 
-      count = count + 1
+class Player:
+  knapsack = [];
+  
+  def pickUp(self, item):
+    self.knapsack.append(item)
 
-  def has(self, name):
-    for item in self.contents:
+  def hasItem(self, item):
+    for item in self.knapsack:
       if item.getName() == name: 
         return True
     return False
 
-  def use(self, name):
-    for item in self.contents:
-      if item.getName() == name:  
-        return item.getAction()
-  
-  def list(self):
-    for item in self.contents:
-      printNow(item.getName() + ", cabability: " + item.getAction())
-    
-class Player:
-  knapsack = None;
-  
-  def __init__(self):
-    self.knapsack = Knapsack()
-    
-  def pickUp(self, item):
-    self.knapsack.add(item)
-
-  def hasItem(self, item):
-    return self.knapsack.has(item)
-
   def discardItem(self, item):
-    self.knapsack.discard(item)
+    count = 0
+    for item in self.knapsack:
+      if item.getName() == name:
+        self.knapsack.pop(count) 
+      count = count + 1
     
   def useItem(self, item):
-    return self.knapsack.use(item)
+    for item in self.knapsack:
+      if item.getName() == name:  
+        return item.getAction()
     
   def listItems(self):
-    self.knapsack.list()
+    for item in self.knapsack:
+      printNow(item.getName() + ", cabability: " + item.getAction())
     
 def welcome():
   printNow("Hello. Welcome to the Winchester Mystery House.")
