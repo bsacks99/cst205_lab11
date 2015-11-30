@@ -25,7 +25,7 @@ class Knapsack:
         self.contents.pop(count) 
       count = count + 1
       
-  def use(self, item):
+  def use(self, name):
     for item in self.contents:
       if item.getName() == name:
         return item.getAction()
